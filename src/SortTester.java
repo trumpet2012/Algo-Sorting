@@ -2,7 +2,7 @@
  * William Trent Holliday
  * 8/25/15
  *
- * Test arrays starting at 1,0000 numbers and up to 500,000 numbers.
+ * Test arrays starting at 1,0000 numbers and up to 200,000 numbers.
  *
  */
 import javafx.application.Application;
@@ -46,11 +46,11 @@ public class SortTester extends Application{
     private Button showGraph, showTable;
 
     public static void main(String[] args){
-        showGui(1);
+        new SortTester().showGui(1);
         launch();
     }
 
-    public static void showGui(int avgTimes){
+    public void showGui(int avgTimes){
         runSimulation(avgTimes);
     }
 
@@ -75,7 +75,7 @@ public class SortTester extends Application{
         System.out.println("---------------------");
     }
 
-    private static void runSimulation(int avgTimes){
+    private void runSimulation(int avgTimes){
         int[] array1k = createRandomArray(1000);
         int[] array10k = createRandomArray(10000);
         int[] array100k = createRandomArray(100000);
@@ -127,31 +127,31 @@ public class SortTester extends Application{
 
         XYChart.Series<String, Number> series1k = new XYChart.Series<String, Number>();
         series1k.setName("1,000 Items");
-        series1k.getData().add(new XYChart.Data(bubble, getBubble1k().getExecutionTime()));
-        series1k.getData().add(new XYChart.Data(insertion, getInsertion1k().getExecutionTime()));
-        series1k.getData().add(new XYChart.Data(selection, getSelection1k().getExecutionTime()));
-        series1k.getData().add(new XYChart.Data(quicksort, getQuickSort1k().getExecutionTime()));
+        series1k.getData().add(new XYChart.Data(bubble, bubble1k.getExecutionTime()));
+        series1k.getData().add(new XYChart.Data(insertion, insertion1k.getExecutionTime()));
+        series1k.getData().add(new XYChart.Data(selection, selection1k.getExecutionTime()));
+        series1k.getData().add(new XYChart.Data(quicksort, quickSort1k.getExecutionTime()));
 
         XYChart.Series series10k = new XYChart.Series();
         series10k.setName("10,000 Items");
-        series10k.getData().add(new XYChart.Data(bubble, getBubble10k().getExecutionTime()));
-        series10k.getData().add(new XYChart.Data(insertion, getInsertion10k().getExecutionTime()));
-        series10k.getData().add(new XYChart.Data(selection, getSelection10k().getExecutionTime()));
-        series10k.getData().add(new XYChart.Data(quicksort, getQuickSort10k().getExecutionTime()));
+        series10k.getData().add(new XYChart.Data(bubble, bubble10k.getExecutionTime()));
+        series10k.getData().add(new XYChart.Data(insertion, insertion10k.getExecutionTime()));
+        series10k.getData().add(new XYChart.Data(selection, selection10k.getExecutionTime()));
+        series10k.getData().add(new XYChart.Data(quicksort, quickSort10k.getExecutionTime()));
 
         XYChart.Series series100k = new XYChart.Series();
         series100k.setName("100,000 Items");
-        series100k.getData().add(new XYChart.Data(bubble, getBubble100k().getExecutionTime()));
-        series100k.getData().add(new XYChart.Data(insertion, getInsertion100k().getExecutionTime()));
-        series100k.getData().add(new XYChart.Data(selection, getSelection100k().getExecutionTime()));
-        series100k.getData().add(new XYChart.Data(quicksort, getQuickSort100k().getExecutionTime()));
+        series100k.getData().add(new XYChart.Data(bubble, bubble100k.getExecutionTime()));
+        series100k.getData().add(new XYChart.Data(insertion, insertion100k.getExecutionTime()));
+        series100k.getData().add(new XYChart.Data(selection, selection100k.getExecutionTime()));
+        series100k.getData().add(new XYChart.Data(quicksort, quickSort100k.getExecutionTime()));
 
         XYChart.Series series200k = new XYChart.Series();
         series200k.setName("200,000 Items");
-        series200k.getData().add(new XYChart.Data(bubble, getBubble200k().getExecutionTime()));
-        series200k.getData().add(new XYChart.Data(insertion, getInsertion200k().getExecutionTime()));
-        series200k.getData().add(new XYChart.Data(selection, getSelection200k().getExecutionTime()));
-        series200k.getData().add(new XYChart.Data(quicksort, getQuickSort200k().getExecutionTime()));
+        series200k.getData().add(new XYChart.Data(bubble, bubble200k.getExecutionTime()));
+        series200k.getData().add(new XYChart.Data(insertion, insertion200k.getExecutionTime()));
+        series200k.getData().add(new XYChart.Data(selection, selection200k.getExecutionTime()));
+        series200k.getData().add(new XYChart.Data(quicksort, quickSort200k.getExecutionTime()));
 
         Scene graphScene = new Scene(barChart, 800, 600);
         barChart.getData().addAll(series1k, series10k, series100k, series200k);
@@ -167,69 +167,5 @@ public class SortTester extends Application{
         primaryStage.setScene(graphScene);
 
         primaryStage.show();
-    }
-
-    public static SortedResult getBubble1k() {
-        return bubble1k;
-    }
-
-    public static SortedResult getBubble10k() {
-        return bubble10k;
-    }
-
-    public static SortedResult getBubble100k() {
-        return bubble100k;
-    }
-
-    public static SortedResult getBubble200k() {
-        return bubble200k;
-    }
-
-    public static SortedResult getInsertion1k() {
-        return insertion1k;
-    }
-
-    public static SortedResult getInsertion10k() {
-        return insertion10k;
-    }
-
-    public static SortedResult getInsertion100k() {
-        return insertion100k;
-    }
-
-    public static SortedResult getInsertion200k() {
-        return insertion200k;
-    }
-
-    public static SortedResult getSelection1k() {
-        return selection1k;
-    }
-
-    public static SortedResult getSelection10k() {
-        return selection10k;
-    }
-
-    public static SortedResult getSelection100k() {
-        return selection100k;
-    }
-
-    public static SortedResult getSelection200k() {
-        return selection200k;
-    }
-
-    public static SortedResult getQuickSort1k() {
-        return quickSort1k;
-    }
-
-    public static SortedResult getQuickSort10k() {
-        return quickSort10k;
-    }
-
-    public static SortedResult getQuickSort100k() {
-        return quickSort100k;
-    }
-
-    public static SortedResult getQuickSort200k() {
-        return quickSort200k;
     }
 }
